@@ -76,8 +76,8 @@ function artistList(artistSortingType, page){
             })
 
             str += "<a class='getinfo' style='cursor:pointer;' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistInfoNumber +"' target='_self'>"
-            str += "<div class='list-bigger-wrap'>"
-            str += "<img id='img-" + artistInfoNumber + "' class='lazyload' src='' alt='#' style=''/>"
+            str += "<div class='list-bigger-wrap'><div class='artistImg-wrap'>"
+            str += "<img id='img-" + artistInfoNumber + "' class='lazyload' src='' alt='#' style=''/></div>"
             str += "<div class='list-bigger-txt'>"
             str += "<p class='list-b-tit1 v2 v2'>" + artist.artistName + "</p>"
             str += "</div>"

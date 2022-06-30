@@ -18,14 +18,13 @@ public class UserMapperTests {
     @Test
     public void joinTest() {
         UserVO userVO = new UserVO();
-
-        userVO.setUserId("tndus");
-        userVO.setUserPw("1234");
-        userVO.setUserName("김수연");
-        userVO.setUserPhoneNumber("추가 유저 폰넘버 ");
-        userVO.setUserEmail("test.com");
-
-        userMapper.join(userVO);
+        for(int i = 51 ; i < 200 ; i ++) {
+            userVO.setUserId("busker" + i);
+            userVO.setUserPw("12341234r");
+            userVO.setUserName("왕고냥" + i);
+            userVO.setUserPhoneNumber("0101234123" + i);
+            userMapper.join(userVO);
+        }
     }
 
     @Test

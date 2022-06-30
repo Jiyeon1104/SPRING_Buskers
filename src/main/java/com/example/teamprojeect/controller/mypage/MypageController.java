@@ -50,16 +50,24 @@ public class MypageController {
         if(session.getAttribute("artistNumber") != null) {
             Long artistNumber = Long.valueOf(String.valueOf(session.getAttribute("artistNumber")));
             ArtistVO artistVO = artistService.getDetail(artistNumber);
-            model.addAttribute("artist", artistNumber);
+            model.addAttribute("artist", artistVO);
+        } else {
+            ArtistVO artistVO = new ArtistVO();
+            model.addAttribute("artist", artistVO);
         }
         UserVO userVO = userService.read(userNumber);
         String userEmail = userVO.getUserEmail();
-//        String[] str = userEmail.split("@");
-//        userVO.setUserEmailId(str[0]);
-//        userVO.setUserDomain(str[1]);
-//        log.info(str[0]);
-        model.addAttribute("user",userVO);
+        log.info("==========================================userEmail");
+        log.info(userEmail);
 
+        if(userEmail != null) {
+            String[] str = userEmail.split("@");
+            userVO.setUserEmailId(str[0]);
+            userVO.setUserDomain(str[1]);
+        }
+
+
+        model.addAttribute("user",userVO);
         return "/myPage/myPage";
     }
 
@@ -81,7 +89,7 @@ public class MypageController {
 
         userVO.setUserNumber(userNumber);
         userService.modify(userVO);
-        return "유저 정보 수정 성공";
+        return "개인정보 수정이 완료되었습니다.";
     }
 
     // 비밀번호 수정 - Talend API Tester 통과
@@ -89,11 +97,13 @@ public class MypageController {
     @ResponseBody
     public String modifyPw(@PathVariable("userNumber") Long userNumber, @RequestBody String password){
         log.info("modifyPw.................." + userNumber);
+
+        password = password.substring(9);
         log.info("modifyPw.................." + password);
 
         userService.modifyPw(userNumber, password);
 
-        return "비밀번호 수정 성공";
+        return "비밀번호 수정이 완료되었습니다.";
     }
 
     // 회원 탈퇴 - Talend API Tester 통과
@@ -101,7 +111,7 @@ public class MypageController {
     @ResponseBody
     public String remove(@PathVariable("userNumber")Long userNumber){
         userService.remove(userNumber);
-        return "유저 삭제 성공";
+        return "회원 탈퇴가 완료되었습니다. 감사합니다.";
     }
 
     // 관심 아티스트 좋아요 취소
@@ -150,7 +160,7 @@ public class MypageController {
         log.info("modify..............");
         artistVO.setArtistNumber(artistNumber);
         artistService.modifyApply(artistVO);
-        return "아티스트 정보 수정 성공";
+        return "아티스트 정보 수정이 완료되었습니다.";
     }
 
     // 아티스트 계정 삭제
@@ -158,7 +168,7 @@ public class MypageController {
     @ResponseBody
     public String removeArtist(@PathVariable("artistNumber") Long artistNumber){
         artistService.removeArtist(artistNumber);
-        return "아티스트 삭제 성공";
+        return "아티스트 정보 삭제가 완료되었습니다. 감사합니다.";
     }
 
     // 후원 목록 (아티스트 관점)

@@ -121,6 +121,10 @@ public class ArtistDAO {
         return artistMapper.insertAdmin(artistNumber) == 1;
     }
 
+    public boolean changeStatus(Long userNumber) {
+        return artistMapper.changeStatus(userNumber) == 1;
+    }
+
     // 아티스트 등록, 수정 신청 반려
     public boolean rejectArtistApply(Long artistNumber) {
         return artistMapper.rejectArtistApply(artistNumber) == 1;

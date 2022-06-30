@@ -641,7 +641,7 @@
             $.each(list.list, function (i, artists) {
                 let category = "뮤지션"
                 if(artists.artistType == '2'){
-                    category = "아티스트";
+                    category = "퍼포먼스";
                 }
                 str += `<tr>`;
                 str += `<td>${artists.artistNumber}</td>`;
@@ -671,8 +671,8 @@
 
             $.each(list.list, function (i, artists) {
                 let category = "뮤지션"
-                if(artists.artistType == '2'){
-                    category = "아티스트";
+                if(artists.artistType == 2){
+                    category = "퍼포먼스";
                 }
                 str += `<tr>`;
                 str += `<td>${artists.artistNumber}</td>`;
@@ -703,17 +703,17 @@
         let next = endPage * 10 < total;
         let str = "";
 
-        str += `<a class="mypage-page-first changePage" href="javascript:showArtistApplyList(${1})">&lt;&lt;</a>`;
+        str += `<a class="mypage-page-first changePage" href="javascript:showArtistList(${1})">&lt;&lt;</a>`;
         if(prev) {
-            str += `<a class="mypage-page-prev" href="javascript:showArtistApplyList(${startPage-1})">&lt;</a>`;
+            str += `<a class="mypage-page-prev" href="javascript:showArtistList(${startPage-1})">&lt;</a>`;
         }
         for(let i = startPage; i <= endPage; i++){
-            str += pageNumA == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showArtistApplyList(${i})">${i}</a>`;
+            str += pageNumA == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showArtistList(${i})">${i}</a>`;
         }
         if(next){
-            str += `<a class="mypage-page-next changePage" href="javascript:showArtistApplyList(${endPage+1})">&gt;</a>`;
+            str += `<a class="mypage-page-next changePage" href="javascript:showArtistList(${endPage+1})">&gt;</a>`;
         }
-        str += `<a class="mypage-page-last changePage" href="javascript:showArtistApplyList(${realEnd})">&gt;&gt;</a>`;
+        str += `<a class="mypage-page-last changePage" href="javascript:showArtistList(${realEnd})">&gt;&gt;</a>`;
 
         $pagingA.append(str);
     }

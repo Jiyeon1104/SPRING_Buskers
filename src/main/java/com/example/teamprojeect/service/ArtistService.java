@@ -73,8 +73,13 @@ public class ArtistService {
         return artistDAO.approveArtistApply(artistNumber);
     }
 
+    // 아티스트 신청 승인시 유저 스테이터스 변경
+    public boolean changeStatus(Long userNumber) {
+        return artistDAO.changeStatus(userNumber);
+    }
+
     // 아티스트 등록, 수정 반려
-    public boolean rejcetArtistApply(Long artistNumber){
+    public boolean rejectArtistApply(Long artistNumber){
         return artistDAO.rejectArtistApply(artistNumber);
     }
 

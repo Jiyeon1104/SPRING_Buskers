@@ -454,7 +454,7 @@ input[type=checkbox] {
 }
 
 p.circle {
-    width: auto;
+    width: 23px;
     height: auto;
     border-radius: 50%;
     overflow: hidden;

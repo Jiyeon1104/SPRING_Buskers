@@ -171,7 +171,7 @@ body {
 
 #logo{
     position: relative;
-    bottom:40px;
+    bottom: 48px;
 }
 
 /* common.css */
@@ -445,7 +445,7 @@ footer .cont{width:1200px;}
 .footer-menu .family li .family-btn:hover{text-decoration:none;}
 .footer-txt{position:relative;height:165px;}
 .footer-txt .flogo{display:block;position:absolute;top:53px;left:2px;}
-.footxt{position:absolute;top:22px;left:221px;}
+.footxt{position:absolute;top:22px;left:0px;}
 .footxt p{font-size:15px;color:#333;line-height:23px;margin-bottom:5px;}
 .footxt p.gray{color:#999;font-size:13px;}
 .footxt p.gray+p{font-size:13px;}
@@ -533,7 +533,11 @@ div.cont{width:1200px; margin:0 auto;}
 .white-box .white-box-left a span{background:#000;}
 .white-box .white-box-left a span.on{background:#fff;}
 .white-box .white-box-left h1 img.trans{display:none;}
-.white-box .white-box-left h1 img.fixed{display:inline-block;}
+.white-box .white-box-left h1 img.fixed{
+    display:inline-block;
+    width: 232.76px !important;
+    height: 75.33px !important;
+}
 .white-box .white-box-center a{color:#000;}
 .white-box .white-box-center h2{position:relative;}
 .white-box .white-box-center h2 div{display:none;position:absolute; top:48px; width:500px; font-size:0;}

@@ -92,9 +92,9 @@
                             </dd>
                         </dl>
                     </div>
-                    <input type='hidden' id='fileName' name='file.fileName' value=''>
-                    <input type='hidden' id='uuid' name='file.uuid' value=''>
-                    <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
+                    <input type='hidden' id='fileName' name='file.fileName' th:value='${file.fileName}'>
+                    <input type='hidden' id='uuid' name='file.uuid' th:value='${file.uuid}'>
+                    <input type='hidden' id='uploadPath' name='file.uploadPath' th:value='${file.uploadPath}'>
                     <input type='hidden' th:field="${artistNumber}">
                 </form>
                 <div class="info_area2" style="float: right;">

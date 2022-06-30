@@ -409,15 +409,21 @@ p{
 * {box-sizing: content-box;}
 body {font-family: Verdana, sans-serif;}
 .mySlides {display: none;}
-img {vertical-align: middle;
-    width: auto; height: auto;
+img {
+    width: 430px;
+    height: 602px;
     max-width: 430px;
     max-height: 602px;
-
-
-
-
+    object-fit: cover;
 }
+
+.slide_show{
+    text-align : center;
+}
+
+
+
+
 
 #img- {
     vertical-align: middle;

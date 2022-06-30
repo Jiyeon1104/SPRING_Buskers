@@ -12,6 +12,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -78,7 +79,7 @@ public class KakaoService {
         return access_Token;
     }
 
-    public Long getKakaoInfo(String token) throws Exception {
+    public Long getKakaoInfo(String token, HttpSession session) throws Exception {
         UserVO userVO = new UserVO();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         HashMap<String, Object> userInfo = new HashMap<>();
@@ -117,6 +118,7 @@ public class KakaoService {
 
             
             if(userService.searchId(email) == null) {
+                session.setAttribute("kakaoJoin", "kakaoJoin");
                 userVO.setUserId(email);
                 userVO.setUserName(email);
                 userVO.setUserPw("buskers");

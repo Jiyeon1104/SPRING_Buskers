@@ -94,6 +94,7 @@ public class RecruitmentController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
+        model.addAttribute("file",recruitService.getFiles(recruitmentNumber));
         model.addAttribute("recruitment", recruitService.getDetail(recruitmentNumber));
     }
 

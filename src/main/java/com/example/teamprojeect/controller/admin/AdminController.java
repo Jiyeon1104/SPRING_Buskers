@@ -131,7 +131,9 @@ public class AdminController {
     @PostMapping("/approveArtist/{ano}")
     @ResponseBody
     public String approveArtist(@PathVariable("ano") Long artistNumber) {
+        Long userNumber = artistService.getDetail(artistNumber).getUserNumber();
         artistService.approveArtistApply(artistNumber);
+        artistService.changeStatus(userNumber);
         return "아티스트의 요청이 승인되었습니다.";
     }
 
@@ -139,7 +141,7 @@ public class AdminController {
     @PostMapping("/rejectArtist/{ano}")
     @ResponseBody
     public String rejectArtist(@PathVariable("ano") Long artistNumber) {
-        artistService.rejcetArtistApply(artistNumber);
+        artistService.rejectArtistApply(artistNumber);
         return "아티스트의 요청이 반려되었습니다.";
     }
 

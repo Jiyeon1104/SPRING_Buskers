@@ -376,18 +376,13 @@
                     <div class="sectionPadding mypageDelete">
                         <div class="delete-text">
                             <li>
-                                회원탈퇴 시, 회원님의 모든 개인정보 및 이용정보가 삭제되며
-                                복구가 불가능합니다.
+                                버스커즈 계정 삭제 시, 회원님의 모든 아티스트 정보 및
+                                이용정보가 삭제되며 복구가 불가능합니다.
                             </li>
                             <ul>
-                                <li>- 벅스 서비스 이용 정보, 보유 이용권, 벅스캐시 등</li>
+                                <li>- 버스커즈 서비스 이용 정보, 버스커즈 후원 정보 등</li>
                                 <li>
-                                    - 구매하신 MP3의 재다운로드 및 라이센스 인증 등의 서비스
-                                    이용 불가
-                                </li>
-                                <li>
-                                    - 제휴사 결합 이용권을 사용 중인 경우, 벅스와 제휴사
-                                    서비스 모두 이용 불가
+                                    - 버스커즈 회원 시 관련 정보 열람 불가
                                 </li>
                             </ul>
                         </div>
@@ -1335,8 +1330,9 @@
                         <div class=""></div>
                     </div>
                     <!-- 소메뉴 나의 아티스트 계정 끝 -->
+
                     <!-- 소메뉴 아티스트 계정 수정  -->
-                    <div class="artistUser-Info" style="display: none;">
+                    <div class="artistUser-Info" style="display: none;" th:object="${artist}">
                         <div class="artist-update-title-box">
                             <div class="work_detail">
                                 <div class="detail">
@@ -1363,6 +1359,7 @@
                             <div style="display:none;">아티스트명</div>
                             <p class="input-name-p" style="margin-top: 31px">
                                 <input
+                                        th:field="*{artistName}"
                                         id="artist-update-name"
                                         class="input_text_name"
                                         placeholder="아티스트 이름을 입력하세요"
@@ -1387,15 +1384,15 @@
                                         <dl>
                                             <dt>분류*</dt>
                                             <dd>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select th:field="*{artistType}" th:value="*{artistType}"
                                                     id="artist-update-category" class="classification">
-                                                <option style="background: white;" value="">선택</option>
-                                                <option style="background: white;" value=1>뮤지션</option>
-                                                <option style="background: white;" value=2>퍼포먼스</option>
+                                                <option style="background: white;" th:text="선택" value=""></option>
+                                                <option style="background: white;" th:text="뮤지션" th:value=1></option>
+                                                <option style="background: white;" th:text="퍼포먼스" th:value=2></option>
                                             </select></dd>
                                             <span><p class="warning_msg1">아티스트 타입을 선택해 주세요.</p></span>
                                             <dt>계좌*</dt>
-                                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+                                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" th:field="*{artistAccount}"
                                                                                            id="artist-update-account"
                                                                                            name="artistAccount" value=""
                                                                                            class="input_text"></dd>
@@ -1407,7 +1404,7 @@
                                         <dl>
                                             <dt>상세내용</dt>
                                             <dd>
-                                                <textarea name="artistDescription" id="artist-update-description"
+                                                <textarea th:field="*{artistDescription}" name="artistDescription" id="artist-update-description"
                                                           cols="84" rows="30"></textarea>
                                                 <span><p class="warning_msg7">아티스트 상세 내용을 입력해 주세요.</p></span>
                                             </dd>
@@ -1427,64 +1424,65 @@
                         <input type='hidden' id='uploadPath2' name='file.uploadPath' value=''>
                         <!-- 소메뉴 아티스트 계정 수정 끝 -->
 
-                        <!-- 소메뉴 아티스트 계정 삭제  -->
-                        <div class="artistUser-Delete" style="display: none">
-                            <p class="desc">
-                                아티스트 계정 삭제에 앞서 아래의 사항들을 꼭 확인하시기
-                                바랍니다.
-                            </p>
 
-                            <div class="sectionPadding mypageDelete">
-                                <div class="delete-text">
-                                    <li>
-                                        아티스트 계정 삭제 시, 회원님의 모든 아티스트 정보 및
-                                        이용정보가 삭제되며 복구가 불가능합니다.
-                                    </li>
-                                    <ul>
-                                        <li>- 버스커즈 서비스 이용 정보, 버스커즈 캐시 등</li>
-                                        <li>
-                                            - 버스커즈 아티스트 시 관련 정보 열람 불가
-                                        </li>
-                                        <li>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="delete-text">
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                                <div class="delete-text">
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                                <div class="delete-text">
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                                <div class="delete-text">
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mypage-btn">
-                                <input
-                                        id="delete-artist"
-                                        type="button"
-                                        class="btnNormal strong small"
-                                        value="위 내용을 모두 확인하였고, 모든 정보 삭제에 동의합니다"
-                                />
-                            </div>
-                        </div>
-                        <!-- 회원탈퇴 끝 -->
                     </div>
 
-                    <!-- 소메뉴 아티스트 계정 등록  -->
+                    <!-- 소메뉴 아티스트 계정 삭제  -->
+                    <div class="artistUser-Delete" style="display: none">
+                        <p class="desc">
+                            아티스트 계정 삭제에 앞서 아래의 사항들을 꼭 확인하시기
+                            바랍니다.
+                        </p>
 
+                        <div class="sectionPadding mypageDelete">
+                            <div class="delete-text">
+                                <li>
+                                    아티스트 계정 삭제 시, 회원님의 모든 아티스트 정보 및
+                                    이용정보가 삭제되며 복구가 불가능합니다.
+                                </li>
+                                <ul>
+                                    <li>- 버스커즈 서비스 이용 정보, 버스커즈 캐시 등</li>
+                                    <li>
+                                        - 버스커즈 아티스트 시 관련 정보 열람 불가
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="delete-text">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="delete-text">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="delete-text">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="delete-text">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mypage-btn">
+                            <input
+                                    id="delete-artist"
+                                    type="button"
+                                    class="btnNormal strong small"
+                                    value="위 내용을 모두 확인하였고, 모든 정보 삭제에 동의합니다"
+                            />
+                        </div>
+                    </div>
+                    <!-- 소메뉴 아티스트 계정 삭제 끝 -->
+
+                    <!-- 소메뉴 아티스트 계정 등록  -->
                     <div class="artistJoin-desc" style="display: none;">
 
                         <div class="artist-join-title-box">
@@ -1576,11 +1574,9 @@
                         <input type='hidden' id='fileName' name='file.fileName' value=''>
                         <input type='hidden' id='uuid' name='file.uuid' value=''>
                         <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
-
-                        <!-- 아티스트 계정 등록 끝 -->
-
-
                     </div>
+                    <!-- 아티스트 계정 등록 끝 -->
+
                     <!-- 소메뉴 아티스트 계정 후원 회원 목록  -->
                     <div class="artistUserDonation-List" style="display: none">
                         <div class="artist-join-title-box">
@@ -1808,11 +1804,15 @@
         src="/assets/js/myPage/myPage.js?ver=1"
 ></script>
 
-<script>
-    if(session.getAttribute("kakaoJoin") == "kakaoJoin") {
-        alert("카카오 로그인 유저의 초기 비밀번호는 buskers 입니다. 비밀번호 변경을 누른 후 비밀번호를 변경해주세요.");
+<script th:inline="javascript">
+    let kakaoJoin = [[${session.kakaoJoin}]];
+    if(kakaoJoin == "kakaoJoin") {
+        alert("카카오 로그인 유저의 초기 비밀번호는 buskers 입니다.\n비밀번호 변경을 누른 후 비밀번호를 변경해주세요.");
     }
-    
+</script>
+<script>
+
+
     let $pagingDA = $(".donation_artist_page");
     let $pagingLA = $(".like_artist");
     let $pagingUD = $(".user_donation");
@@ -1880,7 +1880,7 @@
                 }
                 let artistNumber = Number(myArtist.artistNumber);
                 let src = "";
-                $.getJSON("/file/artist/find", {artistNumber : artistNumber}, function (file) {
+                $.getJSON("/file/artist/find", {artistNumber: artistNumber}, function (file) {
                     src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
                     $("#img-" + artistNumber).attr("src", src);
                     console.log(artistNumber);
@@ -1917,7 +1917,7 @@
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
 
-        if(endPage > realEnd){
+        if (endPage > realEnd) {
             endPage = realEnd;
         }
 
@@ -1927,17 +1927,17 @@
 
 //str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
         str += `<a class="mypage-page-first changePage" href="javascript:myArtistList(${userNumber},${type},${1})">&lt;&lt;</a>`;
-        if(prev) {
+        if (prev) {
 //str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
-            str += `<a class="mypage-page-prev" href="javascript:myArtistList(${userNumber},${type},${startPage-1})">&lt;</a>`
+            str += `<a class="mypage-page-prev" href="javascript:myArtistList(${userNumber},${type},${startPage - 1})">&lt;</a>`
         }
-        for(let i = startPage; i <= endPage; i++){
+        for (let i = startPage; i <= endPage; i++) {
 //str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
             str += pageNumLA == i ? `<a style="cursor:auto" onclick="this.preventDefault()" class="changePage">${i}</a>` : `<a class="changePage" onclick="myArtistList(${userNumber},` + type + `,${i})">${i}</a>`
         }
-        if(next){
+        if (next) {
 //str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
-            str += `<a class="mypage-page-next changePage" href="javascript:myArtistList(${userNumber},${type},${endPage+1})">&gt;</a>`
+            str += `<a class="mypage-page-next changePage" href="javascript:myArtistList(${userNumber},${type},${endPage + 1})">&gt;</a>`
         }
 //str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
         str += `<a class="mypage-page-last changePage" href="javascript:myArtistList(${userNumber},${type},${realEnd})">&gt;&gt;</a>`;
@@ -2041,7 +2041,7 @@
         let endPage = Math.ceil(pageNumW / 10.0) * 10; // 올림
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
-        if(endPage > realEnd){
+        if (endPage > realEnd) {
             endPage = realEnd;
         }
 
@@ -2052,7 +2052,7 @@
 
         str += `<a class="mypage-page-first changePage" href="javascript:myWorkList(${userNumber},${1})">&lt;&lt;</a>`;
         if (prev) {
-            str += `<a class='changePage prevList' href="javascript:myWorkList(${userNumber},${startPage-1})"><code>&lt;</code></a>`
+            str += `<a class='changePage prevList' href="javascript:myWorkList(${userNumber},${startPage - 1})"><code>&lt;</code></a>`
         }
         for (let i = startPage; i <= endPage; i++) {
 // str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
@@ -2316,14 +2316,14 @@
     }
 
     // 나의 후원 페이징
-    function userDonationPage(userNumber, type, total){
+    function userDonationPage(userNumber, type, total) {
         console.log("페이징 들어옴");
         $pagingUD.empty();
         let endPage = Math.ceil(pageNumUD / 10.0) * 10;
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
 
-        if(endPage > realEnd){
+        if (endPage > realEnd) {
             endPage = realEnd;
         }
 
@@ -2333,17 +2333,17 @@
 
 //str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
         str += `<a class="mypage-page-first changePage" href="javascript:userGetDonation(${userNumber}, ${type},${1})">&lt;&lt;</a>`;
-        if(prev) {
+        if (prev) {
 //str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
-            str += `<a class="mypage-page-prev" href="javascript:userGetDonation(${userNumber}, ${type},${startPage-1})">&lt;</a>`
+            str += `<a class="mypage-page-prev" href="javascript:userGetDonation(${userNumber}, ${type},${startPage - 1})">&lt;</a>`
         }
-        for(let i = startPage; i <= endPage; i++){
+        for (let i = startPage; i <= endPage; i++) {
 //str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
             str += pageNumUD == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:userGetDonation(${userNumber}, ${type},${i})">${i}</a>`
         }
-        if(next){
+        if (next) {
 //str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
-            str += `<a class="mypage-page-next changePage" href="javascript:userGetDonation(${userNumber}, ${type},${endPage+1})">&gt;</a>`
+            str += `<a class="mypage-page-next changePage" href="javascript:userGetDonation(${userNumber}, ${type},${endPage + 1})">&gt;</a>`
         }
 //str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
         str += `<a class="mypage-page-last changePage" href="javascript:userGetDonation(${userNumber}, ${type},${realEnd})">&gt;&gt;</a>`;
@@ -2396,13 +2396,13 @@
                 }
 
                 str += "<div class='replyBox'><div class='reply-flex-box'><div class='reply-checkbox'><input name='reply-check' type='checkbox'/></div>"
-                str += "<div class='reply-profile'><img class='reply-img' src='https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0' width='60px'/></div>"
+                str += "<div class='reply-profile'><img class='reply-img' src='/images/myPage/user-icon.png' width='60px'/></div>"
                 str += "<div class='reply-content-box'>"
                 str += "<span class='reply-nickname'>" + myArtistReply.userName + "</span>"
                 str += "<span class='replyDate'>" + myArtistReply.replyUpdateDate + "</span>"
                 str += "<div class='replyContent reply-content-width'>" + myArtistReply.replyContent + "</div></div></div>"
                 str += "<div class='reply-right'><div class='replyArtist'><div class='reply-artist-Box'><div class='reply-artist'>"
-                str += "<img class='reply-img-artist' src='https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG' alt='' /></div>"
+                str += "</div>"
                 str += "<div class='reply-content-box reply-artist-content'><div class='reply-nickname'>" + myArtistReply.artistName + "</div>"
                 str += "<div class='replyContent artist'>" + myReplyArtistType + "</div></div></div></div>"
                 str += "</div></div>"
@@ -2418,14 +2418,14 @@
     let $pagingReply = $(".user_reply");
     let pageNumReply = 1;
 
-    function getUserReplyPage(userNumber, type, total){
+    function getUserReplyPage(userNumber, type, total) {
         console.log("페이징 들어옴");
         $pagingReply.empty();
         let endPage = Math.ceil(pageNumReply / 10.0) * 10;
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
 
-        if(endPage > realEnd){
+        if (endPage > realEnd) {
             endPage = realEnd;
         }
 
@@ -2435,17 +2435,17 @@
 
 //str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
         str += `<a class="mypage-page-first changePage" href="javascript:getUserReply(${userNumber},${1})">&lt;&lt;</a>`;
-        if(prev) {
+        if (prev) {
 //str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
-            str += `<a class="mypage-page-prev" href="javascript:getUserReply(${userNumber}, ${startPage-1})">&lt;</a>`
+            str += `<a class="mypage-page-prev" href="javascript:getUserReply(${userNumber}, ${startPage - 1})">&lt;</a>`
         }
-        for(let i = startPage; i <= endPage; i++){
+        for (let i = startPage; i <= endPage; i++) {
 //str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
             str += pageNumReply == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:getUserReply(${userNumber}, ${i})">${i}</a>`
         }
-        if(next){
+        if (next) {
 //str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
-            str += `<a class="mypage-page-next changePage" href="javascript:getUserReply(${userNumber}, ${endPage+1})">&gt;</a>`
+            str += `<a class="mypage-page-next changePage" href="javascript:getUserReply(${userNumber}, ${endPage + 1})">&gt;</a>`
         }
 //str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
         str += `<a class="mypage-page-last changePage" href="javascript:getUserReply(${userNumber}, ${realEnd})">&gt;&gt;</a>`;
@@ -2479,7 +2479,7 @@
                 str += "<span class='replyDate'>" + myShowReply.replyUpdateDate + "</span>"
                 str += "<div class='replyContent reply-content-width'>" + myShowReply.replyContent + "</div></div></div>"
                 str += "<div class='reply-right'><div class='replyArtist'><div class='reply-artist-Box'><div class='reply-artist'>"
-                str += "<img class='reply-img-artist' src='https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG' alt='' /></div>"
+                str += "</div>"
                 str += "<div class='reply-content-box reply-artist-content'><div class='reply-nickname'>" + myShowReply.showName + "</div>"
                 str += "<div class='replyContent artist'>" + myReplyShowType + "</div></div></div></div>"
                 str += "<button name='reply-delete-button' class='reply-button list-button'>삭제</button></div></div>"

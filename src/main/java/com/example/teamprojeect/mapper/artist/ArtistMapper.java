@@ -76,6 +76,9 @@ public interface ArtistMapper {
     // 아티스트 신청 승인
     public int approveArtistApply(Long artistNumber);
 
+    // 아티스트 신청 승인시 유저 스테이터스 변경
+    public int changeStatus(Long userNumber);
+
     // 아티스트 신청 반려
     public int rejectArtistApply(Long artistNumber);
 

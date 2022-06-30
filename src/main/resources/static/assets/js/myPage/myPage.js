@@ -427,11 +427,12 @@ let myWorkDivCurrentName = ".myWorkList-All";
 
 $(".myWork-tab").click(function (e) {
   e.preventDefault();
-  pwCheckHide();
-  header(".myWork-tab");
-  tabChange(".myWork-list");
-  smallWorkMenu(".work-All-Dot", ".work-All-button");
-  myWorkTabChange(".myWorkList-All");
+  alert("서비스를 준비 중입니다. 빠른 시일내에 조치하겠습니다.")
+  // pwCheckHide();
+  // header(".myWork-tab");
+  // tabChange(".myWork-list");
+  // smallWorkMenu(".work-All-Dot", ".work-All-button");
+  // myWorkTabChange(".myWorkList-All");
 });
 
 // 관심 작품 카테고리 전체
@@ -530,7 +531,6 @@ $(".artistUserDelete-tab").click(function (e) {
   e.preventDefault();
   artistUserSmallMenu(".artistUserDelete-tab");
   informationTabChange(".artistUser-Delete");
-  (".artistUser-Delete");
 });
 
 // 아티스트 후원 탭

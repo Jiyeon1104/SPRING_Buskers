@@ -19,6 +19,13 @@
         WHERE ARTIST_NUMBER = #{artistNumber}
     </update>
 
+    <!--관리자 등록,수정 승인 (user_artist_status -> 4)-->
+    <update id="changeStatus">
+        UPDATE TBL_USER
+        SET USER_ARTIST_STATUS = 4
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
+
     <!--아티스트 정보 수정 신청 (status 2)-->
     <update id="approveArtistApply">
         UPDATE TBL_ARTIST
@@ -64,10 +71,10 @@
     <!--아티스트 리스트-->
     <select id="getArtistList" resultType="artistVO">
         <![CDATA[
-            SELECT ARTIST_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, USER_ID, ARTIST_STATUS
+            SELECT ARTIST_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, USER_ID, ARTIST_STATUS, ARTIST_TYPE
             FROM (
                 SELECT /*+ INDEX_DESC(TBL_ARTIST SYS_C007141) */
-                ROWNUM RN, ARTIST_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, USER_ID, ARTIST_STATUS
+                ROWNUM RN, ARTIST_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, USER_ID, ARTIST_STATUS, ARTIST_TYPE
                 FROM (
                     SELECT *
                     FROM TBL_ARTIST ta JOIN TBL_USER tu
@@ -369,16 +376,16 @@
 
     <!--랭킹 목록 개수-->
     <select id="getTotal" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_STATUS = 3
 
     </select>
 
     <select id="getTotalMusician" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 1
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 1 AND ARTIST_STATUS = 3
     </select>
 
     <select id="getTotalPerformance" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 2
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 2 AND ARTIST_STATUS = 3
     </select>
 
     <!--아티스트 상세 정보-->
