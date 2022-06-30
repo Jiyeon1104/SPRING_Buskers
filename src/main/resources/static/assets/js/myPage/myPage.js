@@ -311,6 +311,11 @@ function changePassword() {
       return;
     }
   }
+  myPageService.modifyPw(userNumber, $("input#newPasswordEqualInput").val(), function(result){
+    console.log($("input#newPasswordEqualInput").val());
+    alert("비밀번호 수정이 완료되었습니다.");
+    location.href = "/myPage/myPage"
+  })
 }
 
 

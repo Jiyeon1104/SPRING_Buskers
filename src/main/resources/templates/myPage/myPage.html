@@ -358,6 +358,7 @@
                             <input
                                     type="button"
                                     class="btnNormal small"
+                                    id="pwChange"
                                     value="확인"
                                     onclick="changePassword();"
                             />
@@ -1840,13 +1841,13 @@
     });
 
     // 비밀번호 수정
-    $("input#pwChange").on("click", function () {
-        myPageService.modifyPw(userNumber, $("input#newPasswordEqualInput").val(), function (result) {
-            console.log($("input#newPasswordEqualInput").val())
-            alert(result);
-            location.href = "/myPage/myPage"
-        });
-    })
+    // $("input#pwChange").on("click", function () {
+    //     myPageService.modifyPw(userNumber, $("input#newPasswordEqualInput").val(), function (result) {
+    //         console.log($("input#newPasswordEqualInput").val())
+    //         alert(result);
+    //         location.href = "/myPage/myPage"
+    //     });
+    // })
 
     let pageNum = 1;
     let type = "A";
