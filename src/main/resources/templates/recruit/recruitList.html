@@ -55,7 +55,7 @@
         <div class="board-table">
             <table>
                 <thead>
-                <tr><th scope="col">구분</th><th scope="col">제목</th><th scope="col">공고시작 일시</th><th scope="col">조회수</th></tr>
+                <tr><th scope="col">구분</th><th scope="col">제목</th><th scope="col">공고시작 일시</th><th scope="col">게시물 번호</th></tr>
                 </thead>
                 <tbody class="list">
                 </tbody>
@@ -155,7 +155,7 @@
                 str += "</td>";
                 str += "<td><a href='/recruit/recruitInfo?pageNum="+pageNum+"&amount=10&type&keyword&recruitmentNumber=" +recru.recruitmentNumber+ "' class='clickLink'><em>" + recru.recruitmentName + "</em></a></td>";
                 str += "<td>" + (recru.recruitmentDay).substring(0,11) + " " + recru.recruitmentTime + "</td>";
-                str += "<td>284</td>"
+                str += "<td>"+recru.recruitmentNumber+"</td>"
                 str += "</tr>"
             });
             $table.append(str);

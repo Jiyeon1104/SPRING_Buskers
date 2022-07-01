@@ -71,10 +71,10 @@
         ]]>
         <choose>
             <when test='artistType == "M"'>
-                AND RECRUITMENT_TYPE = 'M'
+                AND RECRUITMENT_TYPE IN ('M','A')
             </when>
             <when test='artistType == "P"'>
-                AND RECRUITMENT_TYPE = 'P'
+                AND RECRUITMENT_TYPE IN ('P','A')
             </when>
         </choose>
     </select>
